@@ -23,4 +23,13 @@ code {
 
 :root {
   --font: "Poppins";
+  --theme: #452380;
+}
+
+html {
+  height: 100%;
+}
+
+.font {
+  font-family: var(--font);
 }

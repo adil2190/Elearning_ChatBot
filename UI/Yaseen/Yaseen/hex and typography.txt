@@ -1,0 +1,2 @@
+purple hex: #452380
+Typography: poppins
