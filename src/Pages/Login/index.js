@@ -3,7 +3,9 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
+
 import Logo from "../../Assets/logo1.png";
+import AuthHeader from "../../Headers/AuthHeader/index";
 import { ReactComponent as User } from "../../Assets/Icon awesome-user-alt.svg";
 import { ReactComponent as Pass } from "../../Assets/Icon awesome-lock.svg";
 import { ReactComponent as User1 } from "../../Assets/Icon awesome-user-alt-1.svg";
@@ -22,11 +24,7 @@ const Login = (props) => {
 
   return (
     <div>
-      <div className="header">
-        <div className="logo-circle">
-          <img src={Logo} alt="logo" height="100%" width="100%" />
-        </div>
-      </div>
+      <AuthHeader />
 
       <div className="login-container">
         <div className="overlay"></div>
