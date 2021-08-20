@@ -15,7 +15,7 @@ import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   input: {
-    borderBottom: "1px solid black",
+    borderBottom: "1px solid #452380",
   },
 }));
 
@@ -97,7 +97,9 @@ const Login = (props) => {
                 <User1 />
               </div>
               <p className="margin font">Don't have an account?</p>
-              <Link className="margin link">Sign Up</Link>
+              <Link to="/signup" className="margin link">
+                Sign Up
+              </Link>
             </div>
 
             <div className="flex">
