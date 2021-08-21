@@ -1,7 +1,7 @@
 import React from "react";
 
 import "./style.css";
-import Logo from "../../Assets/logo1.png";
+import Logo from "../../Assets/logo2.png";
 
 function AuthHeader(props) {
   return (

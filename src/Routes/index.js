@@ -4,7 +4,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 import Login from "../Pages/Login/index";
 import Signup from "../Pages/Signup/index";
 
-import { DashboardRoutes } from "../Pages/DashBoard/index";
+import DashboardRoutes from "../Pages/DashBoard/index";
 const Routes = (props) => {
   return (
     <BrowserRouter>

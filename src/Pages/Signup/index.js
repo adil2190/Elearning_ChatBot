@@ -124,7 +124,7 @@ const Signup = (props) => {
             </Button>
 
             <div className="flex" style={{ marginTop: "10px" }}>
-              <p className="margin font">Alreadt Registered?</p>
+              <p className="margin font">Already Registered?</p>
               <Link to="/" className="margin link">
                 Login here
               </Link>

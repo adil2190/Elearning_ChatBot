@@ -19,11 +19,16 @@ code {
   margin: 0;
   border: 0;
   padding: 0;
+  font-family: "Poppins" !important;
 }
 
 :root {
   --font: "Poppins";
   --theme: #452380;
+}
+
+body {
+  background-color: #fff !important ;
 }
 
 html {
@@ -32,4 +37,8 @@ html {
 
 .font {
   font-family: var(--font);
+}
+
+.text-dec-none {
+  text-decoration: none;
 }

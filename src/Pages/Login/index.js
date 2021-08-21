@@ -71,15 +71,18 @@ const Login = (props) => {
 
             {/* <input type="text" placeholder="Email" className="field" /> <br />
             <input type="Password" placeholder="Password" className="field" /> */}
-            <Button
-              variant="contained"
-              color="primary"
-              type="submit"
-              className="login-submit"
-              style={{ padding: 15, marginTop: 20 }}
-            >
-              Log in
-            </Button>
+
+            <Link className="text-dec-none" to="/dashboard">
+              <Button
+                variant="contained"
+                color="primary"
+                type="submit"
+                className="login-submit"
+                style={{ padding: 15, marginTop: 20 }}
+              >
+                Log in
+              </Button>
+            </Link>
 
             <p className="form-text">OR</p>
             <Button
