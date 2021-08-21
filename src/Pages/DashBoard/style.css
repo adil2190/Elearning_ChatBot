@@ -6,3 +6,15 @@
   letter-spacing: 0.00938em;
   color: #fff;
 }
+
+.logo-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.logo-box {
+  height: 160px;
+  width: 145px;
+}

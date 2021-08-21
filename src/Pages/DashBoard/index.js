@@ -17,9 +17,15 @@ import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 
+import { ReactComponent as ChatIcon } from "../../Assets/Icon ionic-ios-chatbubbles.svg";
+import { ReactComponent as DashboardIcon } from "../../Assets/Icon material-dashboard.svg";
+import { ReactComponent as LibraryIcon } from "../../Assets/Icon material-library-books.svg";
+import { ReactComponent as LibraryIcon1 } from "../../Assets/library.svg";
+import { ReactComponent as StudentIcon } from "../../Assets/student-profile.svg";
+import Logo from "../../Assets/logo2.png";
 import "./style.css";
 
-const drawerWidth = 240;
+const drawerWidth = 280;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -67,32 +73,37 @@ function Dashboard(props) {
 
   const drawer = (
     <div>
+      <div className="logo-container">
+        <div className="logo-box">
+          <img src={Logo} alt="" height="100%" width="100%" />
+        </div>
+      </div>
       <div className={classes.toolbar} />
-      <Divider />
+      {/* <Divider /> */}
       <ListItem style={{ marginTop: "10px" }} button>
         <ListItemIcon>
-          <MailIcon htmlColor="#fff" />
+          <DashboardIcon />
         </ListItemIcon>
         <p className="list-item">Dashboard</p>
       </ListItem>
 
       <ListItem style={{ marginTop: "10px" }} button>
         <ListItemIcon>
-          <MailIcon htmlColor="#fff" />
+          <LibraryIcon />
         </ListItemIcon>
         <p className="list-item">My Courses</p>
       </ListItem>
 
       <ListItem style={{ marginTop: "10px" }} button>
         <ListItemIcon>
-          <MailIcon htmlColor="#fff" />
+          <LibraryIcon1 />
         </ListItemIcon>
         <p className="list-item">Library</p>
       </ListItem>
 
       <ListItem style={{ marginTop: "10px" }} button>
         <ListItemIcon>
-          <MailIcon htmlColor="#fff" />
+          <ChatIcon />
         </ListItemIcon>
         <p className="list-item">AI Chatbot</p>
       </ListItem>
@@ -117,7 +128,7 @@ function Dashboard(props) {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap>
-            Responsive drawer
+            {/* Responsive drawer */}
           </Typography>
         </Toolbar>
       </AppBar>
