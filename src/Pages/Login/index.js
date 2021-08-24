@@ -110,7 +110,9 @@ const Login = (props) => {
                 <Pass1 />
               </div>
               <p className="margin font">Forgot your password?</p>
-              <Link className="margin link">Reset here</Link>
+              <Link className="margin link" to="/passwordreset/">
+                Reset here
+              </Link>
             </div>
           </form>
         </div>

@@ -3,6 +3,7 @@ import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 import Login from "../Pages/Login/index";
 import Signup from "../Pages/Signup/index";
+import PasswordReset from "../Pages/PasswordReset";
 
 import DashboardRoutes from "../Pages/DashBoard/index";
 const Routes = (props) => {
@@ -15,6 +16,10 @@ const Routes = (props) => {
 
         <Route exact path="/signup/">
           <Signup />
+        </Route>
+
+        <Route exact path="/passwordreset/">
+          <PasswordReset />
         </Route>
 
         <Route exact path="/dashboard/">

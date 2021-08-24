@@ -42,3 +42,9 @@ html {
 .text-dec-none {
   text-decoration: none;
 }
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
