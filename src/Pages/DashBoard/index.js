@@ -16,12 +16,17 @@ import MenuIcon from "@material-ui/icons/Menu";
 import Toolbar from "@material-ui/core/Toolbar";
 import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
+import { Link } from "react-router-dom";
+import { AiFillCaretDown } from "react-icons/ai";
 
 import { ReactComponent as ChatIcon } from "../../Assets/Icon ionic-ios-chatbubbles.svg";
 import { ReactComponent as DashboardIcon } from "../../Assets/Icon material-dashboard.svg";
 import { ReactComponent as LibraryIcon } from "../../Assets/Icon material-library-books.svg";
 import { ReactComponent as LibraryIcon1 } from "../../Assets/library.svg";
-import { ReactComponent as StudentIcon } from "../../Assets/student-profile.svg";
+import { ReactComponent as LogoutIcon } from "../../Assets/Icon feather-log-out.svg";
+// import { ReactComponent as ProfileIcon } from "../../Assets/student-profile.svg";
+import ProfileIcon from "../../Assets/student-profile.png";
+
 import Logo from "../../Assets/logo2.png";
 import "./style.css";
 
@@ -107,6 +112,14 @@ function Dashboard(props) {
         </ListItemIcon>
         <p className="list-item">AI Chatbot</p>
       </ListItem>
+      <Link className="text-dec-none" to="/">
+        <ListItem style={{ marginTop: "100px" }} button>
+          <ListItemIcon>
+            <LogoutIcon />
+          </ListItemIcon>
+          <p className="list-item">Log out</p>
+        </ListItem>
+      </Link>
     </div>
   );
 
@@ -117,7 +130,7 @@ function Dashboard(props) {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar color="default" position="fixed" className={classes.appBar}>
-        <Toolbar>
+        <Toolbar style={{ display: "flex", justifyContent: "space-between" }}>
           <IconButton
             color="inherit"
             aria-label="open drawer"
@@ -130,6 +143,13 @@ function Dashboard(props) {
           <Typography variant="h6" noWrap>
             {/* Responsive drawer */}
           </Typography>
+          <div className="flex-center">
+            <p> Student Name </p>
+            <div style={{ width: "5px" }} />
+            <img src={ProfileIcon} alt="" height="50px" width="50px" />
+            <div style={{ width: "5px" }} />
+            <AiFillCaretDown size="18px" color="#452380" />
+          </div>
         </Toolbar>
       </AppBar>
       <nav className={classes.drawer} aria-label="mailbox folders">
