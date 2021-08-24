@@ -3,6 +3,7 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
+import { FcGoogle } from "react-icons/fc";
 
 import Logo from "../../Assets/logo1.png";
 import AuthHeader from "../../Headers/AuthHeader/index";
@@ -92,6 +93,7 @@ const Login = (props) => {
               className="login-submit"
               style={{ padding: 15, marginTop: 20 }}
             >
+              <FcGoogle style={{ marginRight: "20px" }} size="20px" />
               Log in with Google
             </Button>
 
