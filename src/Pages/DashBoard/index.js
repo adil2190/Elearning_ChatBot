@@ -18,6 +18,9 @@ import Typography from "@material-ui/core/Typography";
 import { makeStyles, useTheme } from "@material-ui/core/styles";
 import { Link } from "react-router-dom";
 import { AiFillCaretDown } from "react-icons/ai";
+import Button from "@material-ui/core/Button";
+import Menu from "@material-ui/core/Menu";
+import MenuItem from "@material-ui/core/MenuItem";
 
 import { ReactComponent as ChatIcon } from "../../Assets/Icon ionic-ios-chatbubbles.svg";
 import { ReactComponent as DashboardIcon } from "../../Assets/Icon material-dashboard.svg";
@@ -71,6 +74,15 @@ function Dashboard(props) {
   const classes = useStyles();
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [anchorEl, setAnchorEl] = React.useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  };
 
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
@@ -147,8 +159,23 @@ function Dashboard(props) {
             <p> Student Name </p>
             <div style={{ width: "5px" }} />
             <img src={ProfileIcon} alt="" height="50px" width="50px" />
-            <div style={{ width: "5px" }} />
-            <AiFillCaretDown size="18px" color="#452380" />
+            <Button
+              aria-controls="simple-menu"
+              aria-haspopup="true"
+              onClick={handleClick}
+            >
+              <AiFillCaretDown size="18px" color="#452380" />
+            </Button>
+            <Menu
+              id="simple-menu"
+              anchorEl={anchorEl}
+              keepMounted
+              open={Boolean(anchorEl)}
+              onClose={handleClose}
+            >
+              <MenuItem onClick={handleClose}>Profile</MenuItem>
+              <MenuItem onClick={handleClose}>My account</MenuItem>
+            </Menu>
           </div>
         </Toolbar>
       </AppBar>
