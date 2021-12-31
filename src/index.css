@@ -51,22 +51,31 @@ html {
 
 .table {
   padding: 10px;
-  transform: translate(290px, 90px);
+  transform: translate(290px, 80px);
   padding-right: 95px;
 }
 
 @media (max-width: 600px) {
   * {
-    font-size: 12px;
+    font-size: 12px !important;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-size: 14px !important;
   }
 
   .table {
-    transform: translate(10px, 80px);
+    transform: translate(10px, 70px);
     padding-right: 40px;
   }
 }
 /* 
-Dashboard 
+SideBar 
 =================================================
 */
 
@@ -89,6 +98,17 @@ Dashboard
 .logo-box {
   height: 160px;
   width: 145px;
+}
+
+/* 
+Dashboard
+=================================================
+*/
+
+.dashboard-heading {
+  color: var(--theme);
+  font-weight: 600;
+  font-size: 2.5rem;
 }
 
 /* Login Page
