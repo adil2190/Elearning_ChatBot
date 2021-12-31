@@ -4,11 +4,10 @@ import Button from "@material-ui/core/Button";
 import { makeStyles, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 
-import Logo from "../../Assets/logo1.png";
-import AuthHeader from "../../Headers/AuthHeader/index";
+import Logo from "../Assets/logo1.png";
+import AuthHeader from "../Headers/AuthHeader/index";
 
 // import { blue } from "@material-ui/core/colors";
-import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   input: {

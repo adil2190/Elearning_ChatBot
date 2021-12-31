@@ -22,16 +22,15 @@ import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
 
-import { ReactComponent as ChatIcon } from "../../Assets/Icon ionic-ios-chatbubbles.svg";
-import { ReactComponent as DashboardIcon } from "../../Assets/Icon material-dashboard.svg";
-import { ReactComponent as LibraryIcon } from "../../Assets/Icon material-library-books.svg";
-import { ReactComponent as LibraryIcon1 } from "../../Assets/library.svg";
-import { ReactComponent as LogoutIcon } from "../../Assets/Icon feather-log-out.svg";
+import { ReactComponent as ChatIcon } from "../Assets/Icon ionic-ios-chatbubbles.svg";
+import { ReactComponent as DashboardIcon } from "../Assets/Icon material-dashboard.svg";
+import { ReactComponent as LibraryIcon } from "../Assets/Icon material-library-books.svg";
+import { ReactComponent as LibraryIcon1 } from "../Assets/library.svg";
+import { ReactComponent as LogoutIcon } from "../Assets/Icon feather-log-out.svg";
 // import { ReactComponent as ProfileIcon } from "../../Assets/student-profile.svg";
-import ProfileIcon from "../../Assets/student-profile.png";
+import ProfileIcon from "../Assets/student-profile.png";
 
-import Logo from "../../Assets/logo2.png";
-import "./style.css";
+import Logo from "../Assets/logo2.png";
 
 const drawerWidth = 280;
 
@@ -69,7 +68,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-function Dashboard(props) {
+function Sidebar(props) {
   const { window } = props;
   const classes = useStyles();
   const theme = useTheme();
@@ -97,33 +96,33 @@ function Dashboard(props) {
       </div>
       <div className={classes.toolbar} />
       {/* <Divider /> */}
-      <ListItem style={{ marginTop: "10px" }} button>
-        <ListItemIcon>
-          <DashboardIcon />
-        </ListItemIcon>
-        <p className="list-item">Dashboard</p>
-      </ListItem>
+      <Link className="text-dec-none" to="/dashboard/default">
+        <ListItem style={{ marginTop: "10px" }} button>
+          <ListItemIcon>
+            <DashboardIcon />
+          </ListItemIcon>
+          <p className="list-item">Dashboard</p>
+        </ListItem>
+      </Link>
 
-      <ListItem style={{ marginTop: "10px" }} button>
-        <ListItemIcon>
-          <LibraryIcon />
-        </ListItemIcon>
-        <p className="list-item">My Courses</p>
-      </ListItem>
+      <Link className="text-dec-none" to="/dashboard/mycourses">
+        <ListItem style={{ marginTop: "10px" }} button>
+          <ListItemIcon>
+            <LibraryIcon />
+          </ListItemIcon>
+          <p className="list-item">My Courses</p>
+        </ListItem>
+      </Link>
 
-      <ListItem style={{ marginTop: "10px" }} button>
-        <ListItemIcon>
-          <LibraryIcon1 />
-        </ListItemIcon>
-        <p className="list-item">Library</p>
-      </ListItem>
-
+      {/* <Link className="text-dec-none" to="/"> */}
       <ListItem style={{ marginTop: "10px" }} button>
         <ListItemIcon>
           <ChatIcon />
         </ListItemIcon>
         <p className="list-item">AI Chatbot</p>
       </ListItem>
+      {/* </Link> */}
+
       <Link className="text-dec-none" to="/">
         <ListItem style={{ marginTop: "100px" }} button>
           <ListItemIcon>
@@ -210,43 +209,11 @@ function Dashboard(props) {
           </Drawer>
         </Hidden>
       </nav>
-      <main className={classes.content}>
-        <div className={classes.toolbar} />
-        <Typography paragraph>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus
-          dolor purus non enim praesent elementum facilisis leo vel. Risus at
-          ultrices mi tempus imperdiet. Semper risus in hendrerit gravida rutrum
-          quisque non tellus. Convallis convallis tellus id interdum velit
-          laoreet id donec ultrices. Odio morbi quis commodo odio aenean sed
-          adipiscing. Amet nisl suscipit adipiscing bibendum est ultricies
-          integer quis. Cursus euismod quis viverra nibh cras. Metus vulputate
-          eu scelerisque felis imperdiet proin fermentum leo. Mauris commodo
-          quis imperdiet massa tincidunt. Cras tincidunt lobortis feugiat
-          vivamus at augue. At augue eget arcu dictum varius duis at consectetur
-          lorem. Velit sed ullamcorper morbi tincidunt. Lorem donec massa sapien
-          faucibus et molestie ac.
-        </Typography>
-        <Typography paragraph>
-          Consequat mauris nunc congue nisi vitae suscipit. Fringilla est
-          ullamcorper eget nulla facilisi etiam dignissim diam. Pulvinar
-          elementum integer enim neque volutpat ac tincidunt. Ornare suspendisse
-          sed nisi lacus sed viverra tellus. Purus sit amet volutpat consequat
-          mauris. Elementum eu facilisis sed odio morbi. Euismod lacinia at quis
-          risus sed vulputate odio. Morbi tincidunt ornare massa eget egestas
-          purus viverra accumsan in. In hendrerit gravida rutrum quisque non
-          tellus orci ac. Pellentesque nec nam aliquam sem et tortor. Habitant
-          morbi tristique senectus et. Adipiscing elit duis tristique
-          sollicitudin nibh sit. Ornare aenean euismod elementum nisi quis
-          eleifend. Commodo viverra maecenas accumsan lacus vel facilisis. Nulla
-          posuere sollicitudin aliquam ultrices sagittis orci a.
-        </Typography>
-      </main>
     </div>
   );
 }
 
-Dashboard.propTypes = {
+Sidebar.propTypes = {
   /**
    * Injected by the documentation to work in an iframe.
    * You won't need it on your project.
@@ -254,7 +221,7 @@ Dashboard.propTypes = {
   window: PropTypes.func,
 };
 
-export default Dashboard;
+export default Sidebar;
 
 // export const DashboardRoutes = (props) => {
 //   return (

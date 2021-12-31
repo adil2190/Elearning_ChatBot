@@ -5,14 +5,13 @@ import { makeStyles, Grid } from "@material-ui/core";
 import { Link } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
 
-import Logo from "../../Assets/logo1.png";
-import AuthHeader from "../../Headers/AuthHeader/index";
-import { ReactComponent as User } from "../../Assets/Icon awesome-user-alt.svg";
-import { ReactComponent as Pass } from "../../Assets/Icon awesome-lock.svg";
-import { ReactComponent as User1 } from "../../Assets/Icon awesome-user-alt-1.svg";
-import { ReactComponent as Pass1 } from "../../Assets/Icon awesome-lock-1.svg";
+import Logo from "../Assets/logo1.png";
+import AuthHeader from "../Headers/AuthHeader/index";
+import { ReactComponent as User } from "../Assets/Icon awesome-user-alt.svg";
+import { ReactComponent as Pass } from "../Assets/Icon awesome-lock.svg";
+import { ReactComponent as User1 } from "../Assets/Icon awesome-user-alt-1.svg";
+import { ReactComponent as Pass1 } from "../Assets/Icon awesome-lock-1.svg";
 // import { blue } from "@material-ui/core/colors";
-import "./style.css";
 
 const useStyles = makeStyles((theme) => ({
   input: {
