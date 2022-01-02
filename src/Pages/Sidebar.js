@@ -124,7 +124,7 @@ function Sidebar(props) {
       {/* </Link> */}
 
       <Link className="text-dec-none" to="/">
-        <ListItem style={{ marginTop: "100px" }} button>
+        <ListItem style={{ marginTop: "150px" }} button>
           <ListItemIcon>
             <LogoutIcon />
           </ListItemIcon>

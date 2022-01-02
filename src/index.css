@@ -51,8 +51,8 @@ html {
 
 .table {
   padding: 10px;
-  transform: translate(290px, 80px);
-  padding-right: 95px;
+  transform: translate(270px, 80px);
+  width: 80%;
 }
 
 @media (max-width: 600px) {
@@ -71,7 +71,6 @@ html {
 
   .table {
     transform: translate(10px, 70px);
-    padding-right: 40px;
   }
 }
 /* 
@@ -109,6 +108,34 @@ Dashboard
   color: var(--theme);
   font-weight: 600;
   font-size: 2.5rem;
+  margin-left: 20px;
+  margin-bottom: 10px;
+}
+
+.course-overview-container {
+  background-color: #f6f6f6;
+  padding: 20px;
+  box-shadow: 0px 0px 15px #00000033;
+  margin-bottom: 30px;
+}
+.course-overview {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+.grid-item {
+  padding: 20px !important;
+}
+
+.dashboard-section-heading {
+  color: var(--theme);
+  font-weight: 600;
+  border-bottom: 2px var(--theme) solid;
+}
+
+.dashboard-view-all {
+  color: var(--theme);
 }
 
 /* Login Page

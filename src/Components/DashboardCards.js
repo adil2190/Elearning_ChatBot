@@ -9,21 +9,19 @@ import demo from "../Assets/form_background.jpg";
 
 export default function DashboardCard() {
   return (
-    <Card sx={{ maxWidth: 345 }}>
+    <Card
+      sx={{ maxWidth: 345 }}
+      style={{ boxShadow: "0px 2px 15px #00000066" }}
+    >
       <CardMedia component="img" height="140" image={demo} alt="green iguana" />
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">
-          Lizard
+          BSSE FALL 2021
         </Typography>
         <Typography variant="body2" color="text.secondary">
-          Lizards are a widespread group of squamate reptiles, with over 6,000
-          species, ranging across all continents except Antarctica
+          HS412 Computing Professional Practices
         </Typography>
       </CardContent>
-      <CardActions>
-        <Button size="small">Share</Button>
-        <Button size="small">Learn More</Button>
-      </CardActions>
     </Card>
   );
 }
