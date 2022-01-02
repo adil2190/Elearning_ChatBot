@@ -11,6 +11,7 @@ import {
 
 import DashboardDefault from "./DashboardDefault";
 import MyCourses from "./MyCourses";
+import CourseDetail from "./CourseDetail";
 
 function Dashboard(props) {
   const location = useLocation();
@@ -25,6 +26,11 @@ function Dashboard(props) {
         <Switch>
           <Route exact path="/dashboard/default" component={DashboardDefault} />
           <Route exact path="/dashboard/mycourses" component={MyCourses} />
+          <Route
+            exact
+            path="/dashboard/coursedetail"
+            component={CourseDetail}
+          />
         </Switch>
       </div>
     </div>

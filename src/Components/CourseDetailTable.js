@@ -19,11 +19,12 @@ const rows = [
   createData("3", "Computing Professional Practices", "HS412", "3"),
 ];
 
-export default function CourseTable() {
+export default function CourseDetailTable() {
   const history = useHistory();
 
   return (
-    <TableContainer component={Paper}>
+    <TableContainer style={{ backgroundColor: "#f6f6f6" }} component={Paper}>
+      <div className="course-detail-table-title">Quizzes</div>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead style={{ backgroundColor: "#452380" }}>
           <TableRow>
@@ -48,11 +49,7 @@ export default function CourseTable() {
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell
-                style={{ color: "#EF0303", cursor: "pointer" }}
-                align="center"
-                onClick={() => history.push("/dashboard/coursedetail")}
-              >
+              <TableCell style={{ color: "#EF0303" }} align="center">
                 {row.calories}
               </TableCell>
               <TableCell align="center">{row.fat}</TableCell>
