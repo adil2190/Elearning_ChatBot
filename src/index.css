@@ -597,3 +597,17 @@ Course Details
   padding: 20px;
   text-align: center;
 }
+
+/* 
+My Profile
+======================================
+*/
+
+.profile-container {
+  margin-left: 20px;
+}
+
+.profile-text {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+}

@@ -12,6 +12,7 @@ import {
 import DashboardDefault from "./DashboardDefault";
 import MyCourses from "./MyCourses";
 import CourseDetail from "./CourseDetail";
+import MyProfile from "./MyProfile";
 
 function Dashboard(props) {
   const location = useLocation();
@@ -31,6 +32,7 @@ function Dashboard(props) {
             path="/dashboard/coursedetail"
             component={CourseDetail}
           />
+          <Route exact path="/dashboard/myprofile" component={MyProfile} />
         </Switch>
       </div>
     </div>
