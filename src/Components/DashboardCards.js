@@ -7,11 +7,12 @@ import Button from "@material-ui/core/Button";
 import Typography from "@material-ui/core/Typography";
 import demo from "../Assets/form_background.jpg";
 
-export default function DashboardCard() {
+export default function DashboardCard({ onClicked }) {
   return (
     <Card
+      onClick={onClicked}
       sx={{ maxWidth: 345 }}
-      style={{ boxShadow: "0px 2px 15px #00000066" }}
+      style={{ boxShadow: "0px 2px 15px #00000066", cursor: "pointer" }}
     >
       <CardMedia component="img" height="140" image={demo} alt="green iguana" />
       <CardContent>

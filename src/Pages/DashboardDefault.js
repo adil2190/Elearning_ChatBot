@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import DashboardCard from "../Components/DashboardCards";
 import { Grid } from "@material-ui/core";
+import CompleteProfileModal from "../Components/CompleteProfileModal";
 
 function DashboardDefault(props) {
+  const [openModal, setOpenModal] = useState(false);
   return (
     <div>
       <h1 className="dashboard-heading">DASHBOARD</h1>
@@ -13,7 +15,7 @@ function DashboardDefault(props) {
         </div>
         <Grid container spacing={6} style={{ marginBottom: "10px" }}>
           <Grid className="grid-item" item md={4} xs={11} lg={3}>
-            <DashboardCard />
+            <DashboardCard onClicked={() => setOpenModal(true)} />
           </Grid>
           <Grid className="grid-item" item md={4} xs={11} lg={3}>
             <DashboardCard />
@@ -44,6 +46,14 @@ function DashboardDefault(props) {
           </Grid>
         </Grid>
       </div>
+
+      <CompleteProfileModal
+        click={openModal}
+        parentCallback={(val) => setOpenModal(val)}
+        onSubmit={() => console.log("submitted")}
+        label="Are you sure you want to continue?"
+        title="Complete Your Student Profile"
+      />
     </div>
   );
 }
