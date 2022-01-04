@@ -176,7 +176,14 @@ function Sidebar(props) {
               >
                 Profile
               </MenuItem>
-              <MenuItem onClick={handleClose}>Change Password</MenuItem>
+              <MenuItem
+                onClick={() => {
+                  history.push("/dashboard/changepassword");
+                  handleClose();
+                }}
+              >
+                Change Password
+              </MenuItem>
             </Menu>
           </div>
         </Toolbar>

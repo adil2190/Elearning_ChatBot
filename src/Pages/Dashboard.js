@@ -13,6 +13,7 @@ import DashboardDefault from "./DashboardDefault";
 import MyCourses from "./MyCourses";
 import CourseDetail from "./CourseDetail";
 import MyProfile from "./MyProfile";
+import ChangePassword from "./ChangePassword";
 
 function Dashboard(props) {
   const location = useLocation();
@@ -33,6 +34,11 @@ function Dashboard(props) {
             component={CourseDetail}
           />
           <Route exact path="/dashboard/myprofile" component={MyProfile} />
+          <Route
+            exact
+            path="/dashboard/changepassword"
+            component={ChangePassword}
+          />
         </Switch>
       </div>
     </div>

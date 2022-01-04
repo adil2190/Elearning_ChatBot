@@ -1,7 +1,10 @@
 import React from "react";
 import { Button } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 function MyProfile(props) {
+  const history = useHistory();
+
   const data = [
     { label: "Full Name", value: "Hammad Ahmed" },
     { label: "Roll No", value: "SE20-050" },
@@ -26,6 +29,7 @@ function MyProfile(props) {
           variant="contained"
           color="primary"
           style={{ marginTop: "10px" }}
+          onClick={() => history.push("/dashboard/changepassword")}
         >
           Change Password
         </Button>
