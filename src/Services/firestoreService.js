@@ -47,7 +47,7 @@ export const getSingleDoc = async (collectionName, docName) => {
 
 export const setSingleDocument = async (collectionName, docName, body) => {
   try {
-    await setDoc(doc(db, collectionName, docName), body);
+    await setDoc(doc(db, collectionName, docName), body, { merge: true });
     return { result: "success", message: "document added successfully" };
   } catch (err) {
     return { result: "failed", message: err };
