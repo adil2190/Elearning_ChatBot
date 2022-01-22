@@ -16,6 +16,7 @@ import { AiFillCaretDown } from "react-icons/ai";
 import Button from "@material-ui/core/Button";
 import Menu from "@material-ui/core/Menu";
 import MenuItem from "@material-ui/core/MenuItem";
+import { getAuth } from "firebase/auth";
 
 import { ReactComponent as ChatIcon } from "../Assets/Icon ionic-ios-chatbubbles.svg";
 import { ReactComponent as DashboardIcon } from "../Assets/Icon material-dashboard.svg";
@@ -71,6 +72,7 @@ function Sidebar(props) {
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
 
+  const auth = getAuth();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
@@ -119,14 +121,21 @@ function Sidebar(props) {
       </ListItem>
       {/* </Link> */}
 
-      <Link className="text-dec-none" to="/">
-        <ListItem style={{ marginTop: "150px" }} button>
-          <ListItemIcon>
-            <LogoutIcon />
-          </ListItemIcon>
-          <p className="list-item">Log out</p>
-        </ListItem>
-      </Link>
+      {/* <Link className="text-dec-none" to="/"> */}
+      <ListItem
+        onClick={() => {
+          auth.signOut();
+          localStorage.removeItem("userId");
+        }}
+        style={{ marginTop: "150px" }}
+        button
+      >
+        <ListItemIcon>
+          <LogoutIcon />
+        </ListItemIcon>
+        <p className="list-item">Log out</p>
+      </ListItem>
+      {/* </Link> */}
     </div>
   );
 

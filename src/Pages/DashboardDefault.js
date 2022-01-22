@@ -1,19 +1,28 @@
 import React, { useState } from "react";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+import { useHistory } from "react-router-dom";
 import DashboardCard from "../Components/DashboardCards";
 import { Grid } from "@material-ui/core";
 import CompleteProfileModal from "../Components/CompleteProfileModal";
-import { getAllDocs } from "../Services/firestoreService";
+import { getAllDocs, getSingleDoc } from "../Services/firestoreService";
 import { collectionNames } from "../Constants/firebaseCollections";
 import { useEffect } from "react";
 
 function DashboardDefault(props) {
   const [openModal, setOpenModal] = useState(false);
   const [semesters, setSemesters] = useState([]);
+  const [loader, setLoader] = useState(true);
+  const history = useHistory();
   const getData = async () => {
     try {
+      const userId = await localStorage.getItem("userId");
       const data = await getAllDocs(collectionNames.courses);
+      const user = await getSingleDoc(collectionNames.students, await userId);
+      if (!user.isProfileComplete) {
+        setOpenModal(true);
+      }
       setSemesters(data);
-      console.log(data);
+      // console.log(data);
     } catch (err) {
       console.log(err);
     }
@@ -33,13 +42,19 @@ function DashboardDefault(props) {
         </div>
         <Grid container spacing={6} style={{ marginBottom: "10px" }}>
           <Grid className="grid-item" item md={4} xs={11} lg={3}>
-            <DashboardCard onClicked={() => setOpenModal(true)} />
+            <DashboardCard
+              onClicked={() => history.push("/dashboard/coursedetail")}
+            />
           </Grid>
           <Grid className="grid-item" item md={4} xs={11} lg={3}>
-            <DashboardCard />
+            <DashboardCard
+              onClicked={() => history.push("/dashboard/coursedetail")}
+            />
           </Grid>
           <Grid className="grid-item" item md={4} xs={11} lg={3}>
-            <DashboardCard />
+            <DashboardCard
+              onClicked={() => history.push("/dashboard/coursedetail")}
+            />
           </Grid>
         </Grid>
       </div>

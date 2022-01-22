@@ -2,8 +2,9 @@ import React from "react";
 import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { makeStyles, Grid } from "@material-ui/core";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { FcGoogle } from "react-icons/fc";
+import { getAuth, onAuthStateChanged } from "firebase/auth";
 
 import Logo from "../Assets/logo1.png";
 import AuthHeader from "../Headers/AuthHeader/index";
@@ -13,6 +14,10 @@ import { ReactComponent as User1 } from "../Assets/Icon awesome-user-alt-1.svg";
 import { ReactComponent as Pass1 } from "../Assets/Icon awesome-lock-1.svg";
 // import { blue } from "@material-ui/core/colors";
 
+import { signInUser } from "../Services/firestoreService";
+import { useState } from "react";
+import { useEffect } from "react";
+
 const useStyles = makeStyles((theme) => ({
   input: {
     borderBottom: "1px solid #452380",
@@ -21,7 +26,32 @@ const useStyles = makeStyles((theme) => ({
 
 const Login = (props) => {
   const classes = useStyles();
+  const history = useHistory();
+  const [data, setData] = useState({
+    email: "",
+    password: "",
+  });
 
+  useEffect(() => {
+    const auth = getAuth();
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        history.push("/dashboard");
+      }
+    });
+  }, []);
+
+  const loginRequest = async (e) => {
+    e.preventDefault();
+    try {
+      const user = await signInUser(data.email, data.password);
+      localStorage.setItem("userId", user.user.uid);
+      // console.log(user);
+      window.location.href = `${window.location.origin}/dashboard/default`;
+    } catch (err) {
+      console.log(err);
+    }
+  };
   return (
     <div>
       <AuthHeader />
@@ -33,7 +63,7 @@ const Login = (props) => {
         <div className="login-box">
           <p className="login-text">SIGN IN</p>
 
-          <form>
+          <form onSubmit={loginRequest}>
             <Grid container spacing={1} alignItems="flex-end">
               <Grid item xs={1}>
                 <User />
@@ -43,10 +73,13 @@ const Login = (props) => {
                   fullWidth
                   id="email"
                   type="email"
+                  required
                   label="Email"
                   className="field"
                   color="primary"
                   inputProps={{ className: classes.input }}
+                  value={data.email}
+                  onChange={(e) => setData({ ...data, email: e.target.value })}
                 />
               </Grid>
             </Grid>
@@ -61,10 +94,15 @@ const Login = (props) => {
                   id="password"
                   type="password"
                   label="Password"
+                  required
                   className="field"
                   color="#890008"
                   style={{ marginTop: "0.9rem" }}
                   inputProps={{ className: classes.input }}
+                  value={data.password}
+                  onChange={(e) =>
+                    setData({ ...data, password: e.target.value })
+                  }
                 />
               </Grid>
             </Grid>
@@ -72,17 +110,15 @@ const Login = (props) => {
             {/* <input type="text" placeholder="Email" className="field" /> <br />
             <input type="Password" placeholder="Password" className="field" /> */}
 
-            <Link className="text-dec-none" to="/dashboard">
-              <Button
-                variant="contained"
-                color="primary"
-                type="submit"
-                className="login-submit"
-                style={{ padding: 15, marginTop: 20 }}
-              >
-                Log in
-              </Button>
-            </Link>
+            <Button
+              variant="contained"
+              color="primary"
+              type="submit"
+              className="login-submit"
+              style={{ padding: 15, marginTop: 20 }}
+            >
+              Log in
+            </Button>
 
             <p className="form-text">OR</p>
             <Button

@@ -14,7 +14,14 @@ import {
   orderBy,
 } from "firebase/firestore";
 
+import {
+  getAuth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+} from "firebase/auth";
+
 const db = getFirestore(app);
+const auth = getAuth();
 
 export const getAllDocs = async (collectionName) => {
   const col = collection(db, collectionName);
@@ -25,6 +32,37 @@ export const getAllDocs = async (collectionName) => {
     return { ...doc.data(), selfId: doc.id };
   });
   return list;
+};
+
+export const getSingleDoc = async (collectionName, docName) => {
+  const docRef = doc(db, collectionName, docName);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    return { code: 400, message: "document not found" };
+  }
+};
+
+export const setSingleDocument = async (collectionName, docName, body) => {
+  try {
+    await setDoc(doc(db, collectionName, docName), body);
+    return { result: "success", message: "document added successfully" };
+  } catch (err) {
+    return { result: "failed", message: err };
+  }
+};
+export const addSingleDoc = async (collectionName, body) => {
+  try {
+    const docRef = await addDoc(collection(db, collectionName), body);
+    return {
+      result: "success",
+      message: `document added successfully with id = ${docRef.id}`,
+    };
+  } catch (err) {
+    return { result: "failed", message: err };
+  }
 };
 
 export const getSubCollection = async (
@@ -102,4 +140,28 @@ export const deleteDocInSubcollection = async (
   } catch (err) {
     return { result: "failed", message: err };
   }
+};
+
+export const createUser = (email, password) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const user = await createUserWithEmailAndPassword(auth, email, password);
+      return resolve(user);
+    } catch (err) {
+      console.log(err.message);
+      return reject(err.message);
+    }
+  });
+};
+
+export const signInUser = (email, password) => {
+  return new Promise(async (resolve, reject) => {
+    try {
+      const user = await signInWithEmailAndPassword(auth, email, password);
+      return resolve(user);
+    } catch (err) {
+      console.log(err.message);
+      return reject(err.message);
+    }
+  });
 };
