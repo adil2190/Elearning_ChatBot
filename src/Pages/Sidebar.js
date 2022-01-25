@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import AppBar from "@material-ui/core/AppBar";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -27,6 +27,9 @@ import { ReactComponent as LogoutIcon } from "../Assets/Icon feather-log-out.svg
 import ProfileIcon from "../Assets/student-profile.png";
 
 import Logo from "../Assets/logo2.png";
+import { getSingleDoc } from "../Services/firestoreService";
+import { collectionNames } from "../Constants/firebaseCollections";
+import { useEffect } from "react";
 
 const drawerWidth = 280;
 
@@ -71,7 +74,19 @@ function Sidebar(props) {
   const theme = useTheme();
   const [mobileOpen, setMobileOpen] = React.useState(false);
   const [anchorEl, setAnchorEl] = React.useState(null);
-
+  const [selfData, setSelfData] = useState({});
+  const getData = async () => {
+    try {
+      const userId = localStorage.getItem("userId");
+      const user = await getSingleDoc(collectionNames.students, userId);
+      setSelfData(user);
+    } catch (err) {
+      console.log(err);
+    }
+  };
+  useEffect(() => {
+    getData();
+  }, []);
   const auth = getAuth();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
@@ -160,7 +175,10 @@ function Sidebar(props) {
             {/* Responsive drawer */}
           </Typography>
           <div className="flex-center">
-            <p> Student Name </p>
+            <p>
+              {" "}
+              {`${selfData.rollNumber} ${selfData.firstName} ${selfData.lastName}`}{" "}
+            </p>
             <div style={{ width: "5px" }} />
             <img src={ProfileIcon} alt="" height="50px" width="50px" />
             <Button

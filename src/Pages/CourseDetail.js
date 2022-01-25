@@ -30,7 +30,6 @@ function CourseDetail(props) {
         "courses",
         courseId
       );
-      console.log(course);
       setCourseDetails(course);
     } catch (err) {
       console.log(err);

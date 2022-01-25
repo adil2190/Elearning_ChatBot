@@ -22,7 +22,6 @@ const rows = [
 export default function CourseDetailTable({ title, data }) {
   const history = useHistory();
 
-  console.log(data);
   return (
     <TableContainer
       style={{ backgroundColor: "#f6f6f6", marginTop: "20px" }}
