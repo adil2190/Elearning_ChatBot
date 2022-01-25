@@ -99,7 +99,9 @@ function Sidebar(props) {
   const handleDrawerToggle = () => {
     setMobileOpen(!mobileOpen);
   };
-
+  const handleClose1 = () => {
+    setMobileOpen(false);
+  };
   const drawer = (
     <div>
       <div className="logo-container">
@@ -110,7 +112,11 @@ function Sidebar(props) {
       <div className={classes.toolbar} />
       {/* <Divider /> */}
       <Link className="text-dec-none" to="/dashboard/default">
-        <ListItem style={{ marginTop: "10px" }} button>
+        <ListItem
+          onClick={() => handleClose1()}
+          style={{ marginTop: "10px" }}
+          button
+        >
           <ListItemIcon>
             <DashboardIcon />
           </ListItemIcon>
@@ -119,7 +125,11 @@ function Sidebar(props) {
       </Link>
 
       <Link className="text-dec-none" to="/dashboard/mycourses">
-        <ListItem style={{ marginTop: "10px" }} button>
+        <ListItem
+          onClick={() => handleClose1()}
+          style={{ marginTop: "10px" }}
+          button
+        >
           <ListItemIcon>
             <LibraryIcon />
           </ListItemIcon>
@@ -128,7 +138,11 @@ function Sidebar(props) {
       </Link>
 
       {/* <Link className="text-dec-none" to="/"> */}
-      <ListItem style={{ marginTop: "10px" }} button>
+      <ListItem
+        onClick={() => handleClose1()}
+        style={{ marginTop: "10px" }}
+        button
+      >
         <ListItemIcon>
           <ChatIcon />
         </ListItemIcon>
