@@ -44,7 +44,27 @@ export const getSingleDoc = async (collectionName, docName) => {
     return { code: 400, message: "document not found" };
   }
 };
+export const getSubCollectionDoc = async (
+  collectionName,
+  docName,
+  childCollectionName,
+  childDocName
+) => {
+  const docRef = doc(
+    db,
+    collectionName,
+    docName,
+    childCollectionName,
+    childDocName
+  );
+  const docSnap = await getDoc(docRef);
 
+  if (docSnap.exists()) {
+    return docSnap.data();
+  } else {
+    return { code: 400, message: "document not found" };
+  }
+};
 export const setSingleDocument = async (collectionName, docName, body) => {
   try {
     await setDoc(doc(db, collectionName, docName), body, { merge: true });
@@ -164,4 +184,63 @@ export const signInUser = (email, password) => {
       return reject(err.message);
     }
   });
+};
+
+export const getSessionals = async (
+  parentCollectionName,
+  docName,
+  childDocName
+) => {
+  try {
+    const col = collection(
+      db,
+      `${parentCollectionName}/${docName}/courses/${childDocName}/sessionals`
+    );
+    const q = query(col);
+    const snapshot = await getDocs(q);
+    const list = snapshot.docs.map((doc) => {
+      return { ...doc.data(), selfId: doc.id };
+    });
+    return list;
+  } catch (err) {
+    return { result: "failed", message: err };
+  }
+};
+
+export const getFinals = async (
+  parentCollectionName,
+  docName,
+  childDocName
+) => {
+  try {
+    const col = collection(
+      db,
+      `${parentCollectionName}/${docName}/courses/${childDocName}/finals`
+    );
+    const q = query(col);
+    const snapshot = await getDocs(q);
+    const list = snapshot.docs.map((doc) => {
+      return { ...doc.data(), selfId: doc.id };
+    });
+    return list;
+  } catch (err) {
+    return { result: "failed", message: err };
+  }
+};
+
+export const getMids = async (parentCollectionName, docName, childDocName) => {
+  try {
+    const col = collection(
+      db,
+      `${parentCollectionName}/${docName}/courses/${childDocName}/mids`
+    );
+    const q = query(col);
+    const snapshot = await getDocs(q);
+    const list = snapshot.docs.map((doc) => {
+      return { ...doc.data(), selfId: doc.id };
+    });
+    return list;
+  } catch (err) {
+    return { result: "failed", message: err };
+  }
 };

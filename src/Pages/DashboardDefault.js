@@ -89,7 +89,9 @@ function DashboardDefault(props) {
                 <Grid className="grid-item" item md={4} xs={11} lg={3}>
                   <DashboardCard
                     data={item}
-                    onClicked={() => history.push("/dashboard/coursedetail")}
+                    onClicked={() =>
+                      history.push(`/dashboard/coursedetail/${item.selfId}`)
+                    }
                   />
                 </Grid>
               ))}

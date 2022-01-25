@@ -42,7 +42,7 @@ function Dashboard(props) {
           <Route exact path="/dashboard/mycourses" component={MyCourses} />
           <Route
             exact
-            path="/dashboard/coursedetail"
+            path="/dashboard/coursedetail/:courseId"
             component={CourseDetail}
           />
           <Route exact path="/dashboard/myprofile" component={MyProfile} />

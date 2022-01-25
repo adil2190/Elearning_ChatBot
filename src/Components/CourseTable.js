@@ -71,7 +71,9 @@ export default function CourseTable() {
               <TableCell
                 style={{ color: "#EF0303", cursor: "pointer" }}
                 align="center"
-                onClick={() => history.push("/dashboard/coursedetail")}
+                onClick={() =>
+                  history.push(`/dashboard/coursedetail/${row.selfId}`)
+                }
               >
                 {row.courseName}
               </TableCell>

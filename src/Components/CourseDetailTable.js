@@ -19,41 +19,39 @@ const rows = [
   createData("3", "Computing Professional Practices", "HS412", "3"),
 ];
 
-export default function CourseDetailTable() {
+export default function CourseDetailTable({ title, data }) {
   const history = useHistory();
 
+  console.log(data);
   return (
-    <TableContainer style={{ backgroundColor: "#f6f6f6" }} component={Paper}>
-      <div className="course-detail-table-title">Quizzes</div>
+    <TableContainer
+      style={{ backgroundColor: "#f6f6f6", marginTop: "20px" }}
+      component={Paper}
+    >
+      <div className="course-detail-table-title">{title}</div>
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead style={{ backgroundColor: "#452380" }}>
           <TableRow>
             <TableCell style={{ color: "#fff" }}>S.No</TableCell>
             <TableCell style={{ color: "#fff" }} align="center">
-              Course Name
+              Obtained Marks
             </TableCell>
             <TableCell style={{ color: "#fff" }} align="center">
-              Course Code
-            </TableCell>
-            <TableCell style={{ color: "#fff" }} align="center">
-              Credit Hours
+              Total Marks
             </TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {data.map((row, index) => (
             <TableRow
               key={row.name}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
-                {row.name}
+                {index + 1}
               </TableCell>
-              <TableCell style={{ color: "#EF0303" }} align="center">
-                {row.calories}
-              </TableCell>
-              <TableCell align="center">{row.fat}</TableCell>
-              <TableCell align="center">{row.carbs}</TableCell>
+              <TableCell align="center">{row.obtainedMarks}</TableCell>
+              <TableCell align="center">{row.totalMarks}</TableCell>
             </TableRow>
           ))}
         </TableBody>
