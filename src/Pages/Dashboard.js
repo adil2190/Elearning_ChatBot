@@ -15,10 +15,13 @@ import MyCourses from "./MyCourses";
 import CourseDetail from "./CourseDetail";
 import MyProfile from "./MyProfile";
 import ChangePassword from "./ChangePassword";
+import { useState } from "react";
+import Chatbot from "../Components/Chatbot";
 
 function Dashboard(props) {
   const auth = getAuth();
   const history = useHistory();
+  const [show, setShow] = useState(false);
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
@@ -34,7 +37,7 @@ function Dashboard(props) {
   }
 
   return (
-    <div>
+    <div style={{ position: "relative" }}>
       <Sidebar />
       <div className="table">
         <Switch>
@@ -53,6 +56,12 @@ function Dashboard(props) {
           />
         </Switch>
       </div>
+      <div className="chatbot-icon" onClick={() => setShow(!show)}></div>
+      {show && <Chatbot onClose={() => setShow(false)} />}
+
+      {show && (
+        <div className="chatbot-overlay" onClick={() => setShow(!show)}></div>
+      )}
     </div>
   );
 }

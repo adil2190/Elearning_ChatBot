@@ -538,6 +538,74 @@ Dashboard
 =================================================
 */
 
+.chatbot-icon {
+  height: 100px;
+  width: 100px;
+  background: url("./Assets/chatbotIcon.png");
+  background-size: contain;
+  border-radius: 50%;
+  cursor: pointer;
+  z-index: 100000000;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+
+.chatbot-overlay {
+  z-index: 10000000;
+  top: 0px;
+  right: 0px;
+  bottom: 0px;
+  left: 0px;
+  position: fixed;
+  background-color: #000;
+  opacity: 0.4;
+}
+
+.chatbot-body {
+  height: 400px;
+  width: 310px;
+  background-color: #fff;
+  position: fixed;
+  z-index: 100000000;
+  bottom: 120px;
+  right: 40px;
+  border-radius: 10px;
+}
+
+.chatbot-header {
+  padding: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: #a5a5a5 solid 1px;
+}
+
+.chatbot-header-left {
+  display: flex;
+}
+.chatbot-header-logo {
+  height: 30px;
+  width: 30px;
+  margin-right: 5px;
+  background: url("./Assets/logo2.png");
+  background-size: cover;
+}
+.chatbot-heading {
+  color: var(--theme);
+  font-weight: bold;
+}
+.chatbot-subheading {
+  color: "#777";
+  font-size: 12px;
+}
+.minimize {
+  height: 30px;
+  width: 30px;
+  background: url("./Assets/minimize.png");
+  background-size: contain;
+  cursor: pointer;
+}
 .dashboard-heading {
   color: var(--theme);
   font-weight: 600;
