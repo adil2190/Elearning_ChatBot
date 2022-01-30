@@ -20,7 +20,7 @@ import {
   createUserWithEmailAndPassword,
 } from "firebase/auth";
 
-const db = getFirestore(app);
+export const db = getFirestore(app);
 const auth = getAuth();
 
 export const getAllDocs = async (collectionName) => {
