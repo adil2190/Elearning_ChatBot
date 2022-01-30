@@ -26,7 +26,7 @@ function Chatbot({ onClose }) {
         data.push(doc.data());
       });
       setChatData(data);
-      console.log("messages --> ", data);
+      // console.log("messages --> ", data);
     });
 
     return () => unsubscribe();
