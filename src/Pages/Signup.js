@@ -28,6 +28,8 @@ const useStyles = makeStyles((theme) => ({
 
 const Signup = (props) => {
   const classes = useStyles();
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState("");
   const [data, setData] = useState({
     firstName: "",
     lastName: "",
@@ -40,6 +42,7 @@ const Signup = (props) => {
   const signUpReq = async (e) => {
     e.preventDefault();
     try {
+      setLoader(true);
       const user = await createUser(data.email, data.password);
       await setSingleDocument(collectionNames.students, user.user.uid, {
         ...data,
@@ -47,11 +50,15 @@ const Signup = (props) => {
         userId: user.user.uid,
         isProfileComplete: false,
       });
+      setError("");
       localStorage.setItem("userId", user.user.uid);
       history.push("/");
       console.log(user);
     } catch (err) {
       console.log(err);
+      setError(err);
+    } finally {
+      setLoader(false);
     }
   };
 
@@ -137,10 +144,13 @@ const Signup = (props) => {
               onChange={(e) => setData({ ...data, phone: e.target.value })}
             />
 
+            {error && <p style={{ color: "red" }}>{error}</p>}
+
             <Button
               variant="contained"
               color="primary"
               type="submit"
+              disabled={loader}
               className="login-submit"
               style={{ padding: 15, marginTop: 20 }}
             >
@@ -151,7 +161,6 @@ const Signup = (props) => {
             <Button
               variant="contained"
               color="secondary"
-              type="submit"
               className="login-submit"
               style={{ padding: 15, marginTop: 20 }}
             >

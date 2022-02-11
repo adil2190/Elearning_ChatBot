@@ -27,6 +27,8 @@ const useStyles = makeStyles((theme) => ({
 const Login = (props) => {
   const classes = useStyles();
   const history = useHistory();
+  const [loader, setLoader] = useState(false);
+  const [error, setError] = useState("");
   const [data, setData] = useState({
     email: "",
     password: "",
@@ -37,6 +39,7 @@ const Login = (props) => {
     onAuthStateChanged(auth, (user) => {
       if (user) {
         history.push("/dashboard");
+        setLoader(false);
       }
     });
   }, []);
@@ -44,12 +47,17 @@ const Login = (props) => {
   const loginRequest = async (e) => {
     e.preventDefault();
     try {
+      setLoader(true);
       const user = await signInUser(data.email, data.password);
       localStorage.setItem("userId", user.user.uid);
       // console.log(user);
+      setError("");
       window.location.href = `${window.location.origin}/dashboard/default`;
     } catch (err) {
       console.log(err);
+      setError(err);
+    } finally {
+      setLoader(false);
     }
   };
   return (
@@ -105,6 +113,7 @@ const Login = (props) => {
                   }
                 />
               </Grid>
+              {error && <p style={{ color: "red" }}>{error}</p>}
             </Grid>
 
             {/* <input type="text" placeholder="Email" className="field" /> <br />
@@ -115,6 +124,7 @@ const Login = (props) => {
               color="primary"
               type="submit"
               className="login-submit"
+              disabled={loader}
               style={{ padding: 15, marginTop: 20 }}
             >
               Log in
