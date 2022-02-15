@@ -94,7 +94,7 @@ export default function CompleteProfileModal(props) {
       <Dialog
         onback
         maxWidth="md"
-        PaperProps={{ style: { minWidth: "420px" } }}
+        PaperProps={{ style: { minWidth: "320px" } }}
         open={props.click}
         onClose={(e, r) => {
           if (r !== "backdropClick") {
